@@ -31,13 +31,16 @@
             </thead>
             <tbody>
                 <c:forEach items="${cartItems}" var="item">
-                    <c:set var="product" value="${products.stream().filter(p -> p.productId == item.productId).findFirst().orElse(null)}"/>
-                    <tr>
-                        <td>${product.name}</td>
-                        <td>${item.quantity}</td>
-                        <td>$${product.price}</td>
-                        <td>$${product.price * item.quantity}</td>
-                    </tr>
+                    <c:forEach items="${products}" var="product">
+                        <c:if test="${product.productId == item.productId}">
+                            <tr>
+                                <td>${product.name}</td>
+                                <td>${item.quantity}</td>
+                                <td>$${product.price}</td>
+                                <td>$${product.price * item.quantity}</td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
                 </c:forEach>
             </tbody>
         </table>
