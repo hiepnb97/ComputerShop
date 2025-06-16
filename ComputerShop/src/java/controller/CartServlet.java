@@ -56,7 +56,7 @@ public class CartServlet extends HttpServlet {
             
             CartDAO cartDAO = new CartDAO();
             cartDAO.addToCart(cart);
-            response.sendRedirect("home");
+            response.sendRedirect("cart");
         }
     }
 }
